@@ -49,6 +49,10 @@ public class TasksList extends Component {
         tasksList.add(new Task(this));
     }
 
+    public void addTask(Task t) {
+        tasksList.add(t);
+    }
+
     public void requestFocus(Task t) {
         tasksView.requestFocus(t);
     }
@@ -57,6 +61,11 @@ public class TasksList extends Component {
         for(Task t : tasksList) {
             t.clicked(e);
         }
-    }
+   }
 
+   public void nextPage() {
+   }
+
+   public void prevPage() {
+   }
 }

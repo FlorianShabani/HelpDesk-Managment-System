@@ -25,6 +25,9 @@ public class Task extends Component implements Clickable{
 
         this.id = ID_CURRENT;
         ID_CURRENT++;
+
+        this.title = "";
+        this.description = "";
     }
 
     public Task(TasksList tasksList, String title, String description) {
@@ -38,7 +41,7 @@ public class Task extends Component implements Clickable{
         drawDecorations(g);
 
         g.setColor(Color.BLACK);
-        g.drawString("Hello", 20, 20);   
+        g.drawString(title, 20, 20);   
     }
 
     @Override

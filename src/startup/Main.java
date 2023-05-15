@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
 
 import entities.Component;
+import entities.CreateTaskButton;
 import setup.Manager;
 import setup.Window;
 
@@ -14,7 +15,8 @@ public class Main implements Manager {
 
     public static final int SCREEN_WIDTH = 1200, SCREEN_HEIGHT = 800;
 
-    public static final int TASK_HEIGHT = 80;
+    public static final int TASK_HEIGHT = 80, TASK_BUTTON_HEIGHT = 80, TASK_BUTTON_X = 950,
+            TASK_BUTTON_Y = SCREEN_HEIGHT - TASK_BUTTON_HEIGHT - 60, TASK_BUTTON_WIDTH = 200;
 
     public final static int TASKS_X = 0, TASKS_WIDTH = 300;
     public static final int VIEW_X = TASKS_X + TASKS_WIDTH + Component.margin + Component.margin,
@@ -22,10 +24,13 @@ public class Main implements Manager {
 
     TasksView tasksView;
     TasksList tasksList;
+    CreateTaskButton createTaskButton;
 
     public Main() {
-        tasksView = new TasksView(VIEW_X, 0, VIEW_WIDTH, SCREEN_HEIGHT / 2);
+        tasksView = new TasksView(VIEW_X, 0, VIEW_WIDTH, SCREEN_HEIGHT - TASK_BUTTON_HEIGHT - 70);
         tasksList = new TasksList(TASKS_X, 0, TASKS_WIDTH, SCREEN_HEIGHT, tasksView);
+        createTaskButton = new CreateTaskButton(TASK_BUTTON_X, TASK_BUTTON_Y, TASK_BUTTON_WIDTH, TASK_BUTTON_HEIGHT,
+                tasksList);
     }
 
     public static void main(String[] args) {
@@ -35,10 +40,11 @@ public class Main implements Manager {
     @Override
     public void draw(Graphics g) {
         Font f = new Font("Times New Roman", Font.PLAIN, 12);
-		g.setFont(f);
-        
+        g.setFont(f);
+
         tasksList.draw(g);
         tasksView.draw(g);
+        createTaskButton.draw(g);
     }
 
     @Override
@@ -56,12 +62,10 @@ public class Main implements Manager {
 
     }
 
-    TasksCreate tc = new TasksCreate();
-
     @Override
     public void mouseClicked(MouseEvent e) {
         tasksList.onClick(e);
-        tc.getTask(tasksList);
+        createTaskButton.clicked(e);
     }
 
     @Override

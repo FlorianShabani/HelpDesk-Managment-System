@@ -24,7 +24,7 @@ public class TasksView extends Component{
         g.setColor(Color.BLACK);
         Font f = new Font("Times New Roman", Font.BOLD, 16);
 		g.setFont(f);
-        g.drawString(focusedTask.title, 20, 20);
+        g.drawString(focusedTask.getTitle(), 20, 20);
 
         f = new Font("Times New Roman", Font.PLAIN, 12);
 		g.setFont(f);
@@ -33,6 +33,5 @@ public class TasksView extends Component{
     
     public void requestFocus(Task t) {
         focusedTask = t;
-        System.out.println(t.id);
     }   
 }
