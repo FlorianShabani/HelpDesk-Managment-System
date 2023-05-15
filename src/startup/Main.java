@@ -34,7 +34,7 @@ public class Main implements Manager {
 
     public Main() {
         tasksView = new TasksView(VIEW_X, 0, VIEW_WIDTH, SCREEN_HEIGHT - TASK_BUTTON_HEIGHT - 70);
-        tasksList = new TasksList(TASKS_X, 0, TASKS_WIDTH, SCREEN_HEIGHT, tasksView);
+        tasksList = new TasksList(TASKS_X, 0, TASKS_WIDTH, SCREEN_HEIGHT - 100, tasksView);
         createTaskButton = new CreateTaskButton(TASK_BUTTON_X, TASK_BUTTON_Y, TASK_BUTTON_WIDTH, TASK_BUTTON_HEIGHT,
                 tasksList);
 

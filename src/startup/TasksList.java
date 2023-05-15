@@ -14,12 +14,17 @@ public class TasksList extends Component {
     ArrayList<Task> tasksList = new ArrayList<Task>();
     TasksView tasksView;
 
+    public static int perPageView = 7, page = 0;
 
     public TasksList(int x, int y, int width, int height, TasksView tasksView) {
         super(x, y, width, height);
         this.tasksView = tasksView;
 
-        addTask(new StandardTask(this, "Title", "Important desription"));
+        for (int i = 0; i < 25; i++) {
+            addTask(new StandardTask(this, "Task " + i, "Task " + i));
+        }
+
+        System.out.println(perPageView);
     }
 
     public void drawC(Graphics g) {
@@ -28,11 +33,14 @@ public class TasksList extends Component {
         g.fillRoundRect(0, 0, width, height, padding, padding);
 
         int y = 0;
-        for(Task t : tasksList) {
-            t.draw(0, y, g);
-            t.setX(this.x);
-            t.setY(this.y + y);
-            y += t.getHeight();
+        for (int i = 0; i < tasksList.size(); i++) {
+            Task t = tasksList.get(i);
+            if (i >= (page * perPageView) && i < ((page + 1) * perPageView)) {
+                t.draw(0, y, g);
+                t.setX(this.x);
+                t.setY(this.y + y);
+                y += t.getHeight();
+            }
         }
     }
 
@@ -49,14 +57,17 @@ public class TasksList extends Component {
     }
 
     public void onClick(MouseEvent e) {
-        for(Task t : tasksList) {
-            t.clicked(e);
+        for (int i = 0; i < tasksList.size(); i++) {
+            Task t = tasksList.get(i);
+            if (i >= (page * perPageView) && i < ((page + 1) * perPageView)) {
+                t.clicked(e);
+            }
         }
-   }
+    }
 
-   public void nextPage() {
-   }
+    public void nextPage() {
+    }
 
-   public void prevPage() {
-   }
+    public void prevPage() {
+    }
 }
