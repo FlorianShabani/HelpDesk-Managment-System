@@ -21,7 +21,7 @@ public class TasksList extends Component {
         this.tasksView = tasksView;
 
         for (int i = 0; i < 25; i++) {
-            addTask(new StandardTask(this, "Task " + i, "Task " + i));
+            addTask(new StandardTask(this, "Task " + i, "Task Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ipsum quis erat rhoncus interdum. Donec sollicitudin, elit a egestas pellentesque, odio tortor semper eros, vitae suscipit elit lorem sit amet dolor. Cras id ullamcorper enim. Maecenas fermentum mattis lacinia. Sed tincidunt risus odio, lobortis suscipit elit pulvinar id. Integer vel lectus lorem. Nam et elit sit amet diam tincidunt porta quis et tellus. Pellentesque magna neque, lacinia ut faucibus vitae, facilisis vitae lacus. Proin nulla dui, ornare eget lacinia vel, tincidunt in nisi. Nulla facilisi. Nullam at lacus nec dolor dapibus porttitor. Vivamus consectetur felis tortor, vel blandit risus mollis a. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis at consectetur ligula. Sed vitae rutrum ante. Maecenas et nunc ultrices, convallis nunc ut, sodales elit" + i));
         }
 
         System.out.println(perPageView);
@@ -32,7 +32,10 @@ public class TasksList extends Component {
         g.setColor(new Color(181, 229, 237, 100));
         g.fillRoundRect(0, 0, width, height, padding, padding);
 
-        int y = 0;
+        g.setColor(Color.BLACK);
+        g.drawString("Page : " + (page + 1) + "/" + (tasksList.size() / perPageView + 1), 20, 20);
+
+        int y = 20;
         for (int i = 0; i < tasksList.size(); i++) {
             Task t = tasksList.get(i);
             if (i >= (page * perPageView) && i < ((page + 1) * perPageView)) {
@@ -66,8 +69,10 @@ public class TasksList extends Component {
     }
 
     public void nextPage() {
+        if(page < tasksList.size() / perPageView) page++;
     }
 
     public void prevPage() {
+        if(page > 0) page--;
     }
 }

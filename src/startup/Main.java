@@ -24,7 +24,7 @@ public class Main implements Manager {
     public static final int VIEW_X = TASKS_X + TASKS_WIDTH + Component.margin + Component.margin,
             VIEW_WIDTH = 860;
 
-    public static final int NAV_X = 400, NAV_WIDTH = 50, NAV_HEIGHT = 50, NAV_Y = SCREEN_HEIGHT - NAV_HEIGHT - 70;
+    public static final int NAV_X = 330, NAV_WIDTH = 50, NAV_HEIGHT = 50, NAV_Y = SCREEN_HEIGHT - NAV_HEIGHT - 70;
 
     TasksView tasksView;
     TasksList tasksList;
@@ -34,7 +34,7 @@ public class Main implements Manager {
 
     public Main() {
         tasksView = new TasksView(VIEW_X, 0, VIEW_WIDTH, SCREEN_HEIGHT - TASK_BUTTON_HEIGHT - 70);
-        tasksList = new TasksList(TASKS_X, 0, TASKS_WIDTH, SCREEN_HEIGHT - 100, tasksView);
+        tasksList = new TasksList(TASKS_X, 0, TASKS_WIDTH, SCREEN_HEIGHT - 60, tasksView);
         createTaskButton = new CreateTaskButton(TASK_BUTTON_X, TASK_BUTTON_Y, TASK_BUTTON_WIDTH, TASK_BUTTON_HEIGHT,
                 tasksList);
 
