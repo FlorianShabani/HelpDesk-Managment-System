@@ -11,20 +11,24 @@ import startup.Main;
 import startup.TasksList;
 
 public class Task extends Component implements Clickable{
+    public static int ID_CURRENT = 0;
 
-    public static final int TASK_HEIGHT = 100;
+    public int id;
+
     TasksList tasksList;
 
-    String title, description;
+    public String title, description;
 
     public Task(TasksList tasksList) {
-        super(0, 0, Main.TASKS_WIDTH - margin - margin, TASK_HEIGHT);
+        super(0, 0, Main.TASKS_WIDTH - margin - margin, Main.TASK_HEIGHT);
         this.tasksList = tasksList;
+
+        this.id = ID_CURRENT;
+        ID_CURRENT++;
     }
 
     public Task(TasksList tasksList, String title, String description) {
-        super(0, 0, Main.TASKS_WIDTH - margin - margin, TASK_HEIGHT);
-        this.tasksList = tasksList;
+        this(tasksList);
         this.title = title;
         this.description = description;
     }

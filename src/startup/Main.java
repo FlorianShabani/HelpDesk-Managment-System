@@ -11,9 +11,12 @@ public class Main implements Manager {
 
     public static final int SCREEN_WIDTH = 1200, SCREEN_HEIGHT = 800;
 
+
+    public static final int TASK_HEIGHT = 80;
+
     public final static int TASKS_X = 0, TASKS_WIDTH = 300;
     public static final int VIEW_X = TASKS_X + TASKS_WIDTH + Component.margin + Component.margin,
-    VIEW_WIDTH = 560;
+    VIEW_WIDTH = 860;
 
 
     TasksView tasksView;

@@ -54,6 +54,9 @@ public class TasksList extends Component {
     }
 
     public void onClick(MouseEvent e) {
-        tasksList.get(1).clicked(e);
+        for(Task t : tasksList) {
+            t.clicked(e);
+        }
     }
+
 }
