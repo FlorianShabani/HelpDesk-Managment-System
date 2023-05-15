@@ -15,5 +15,4 @@ public class StandardTask extends Task{
         g.setColor(new Color(161, 209, 227, 150));
         g.fillRoundRect(0, 0, width, height, padding, padding);
     }
-    
 }
