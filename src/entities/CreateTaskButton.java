@@ -1,6 +1,7 @@
 package entities;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import startup.TasksCreate;
@@ -26,5 +27,11 @@ public class CreateTaskButton extends Component implements Clickable {
     public void drawC(Graphics g) {
         g.setColor(new Color(161, 209, 227, 255));
         g.fillRoundRect(0, 0, width, height, padding, padding);
+
+    
+        g.setColor(Color.BLACK);
+        Font f = new Font("Times New Roman", Font.BOLD, 16);
+		g.setFont(f);
+        g.drawString("Create New Task", 20, 43);        
     }
 }

@@ -37,28 +37,25 @@ public class TasksCreate extends JPanel {
         description = new JTextField(30);
         urgent = new Checkbox();
 
-        this.setBackground(new Color(181, 229, 237, 50));
-        title.setBackground(new Color(181, 229, 237, 50));
-        description.setBackground(new Color(181, 229, 237, 50));
-        urgent.setBackground(new Color(181, 229, 237, 50));
+        this.setBackground(new Color(181, 229, 237));
+        title.setBackground(new Color(181, 229, 237));
+        description.setBackground(new Color(181, 229, 237));
+        urgent.setBackground(new Color(181, 229, 237));
 
-        this.add(new JLabel("Title : "));
+        this.add(new JLabel("Title             : "));
         this.add(title);
-        // this.add(Box.createHorizontalStrut(15));
         this.add(new JLabel("Description :"));
         this.add(description);
-        this.add(new JLabel("Urgent?     :"));
+        this.add(new JLabel("Urgent?       :"));
         this.add(urgent);
     }
 
     /**
-     * Creates JOptionPane that shows the inputs to create a new appointment and
+     * Creates JOptionPane that shows the inputs to create a new task and
      * returns it
-     * 
-     * @return
      */
     public Task getTask(TasksList tasksList) {
-        int result = JOptionPane.showConfirmDialog(null, this, "Enter Date and Description",
+        int result = JOptionPane.showConfirmDialog(null, this, "Enter new Task Information",
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
         if (result == JOptionPane.OK_OPTION) {

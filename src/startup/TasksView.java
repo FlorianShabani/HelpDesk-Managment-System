@@ -24,11 +24,11 @@ public class TasksView extends Component{
         g.setColor(Color.BLACK);
         Font f = new Font("Times New Roman", Font.BOLD, 16);
 		g.setFont(f);
-        g.drawString(focusedTask.getTitle(), 20, 20);
+        g.drawString(focusedTask.getTitle(), 20, 40);
 
         f = new Font("Times New Roman", Font.PLAIN, 12);
 		g.setFont(f);
-        Main.drawTextInBox((Graphics2D) g, focusedTask.getDescription(), 20, 50, width - 100, height,  20);
+        Main.drawTextInBox((Graphics2D) g, focusedTask.getDescription(), 20, 70, width - 100, height,  20);
     }
     
     public void requestFocus(Task t) {

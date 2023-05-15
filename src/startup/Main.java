@@ -8,6 +8,8 @@ import java.awt.geom.AffineTransform;
 
 import entities.Component;
 import entities.CreateTaskButton;
+import entities.NextButton;
+import entities.PreviousButton;
 import setup.Manager;
 import setup.Window;
 
@@ -22,15 +24,22 @@ public class Main implements Manager {
     public static final int VIEW_X = TASKS_X + TASKS_WIDTH + Component.margin + Component.margin,
             VIEW_WIDTH = 860;
 
+    public static final int NAV_X = 400, NAV_WIDTH = 50, NAV_HEIGHT = 50, NAV_Y = SCREEN_HEIGHT - NAV_HEIGHT - 70;
+
     TasksView tasksView;
     TasksList tasksList;
     CreateTaskButton createTaskButton;
+    NextButton next;
+    PreviousButton prev;
 
     public Main() {
         tasksView = new TasksView(VIEW_X, 0, VIEW_WIDTH, SCREEN_HEIGHT - TASK_BUTTON_HEIGHT - 70);
         tasksList = new TasksList(TASKS_X, 0, TASKS_WIDTH, SCREEN_HEIGHT, tasksView);
         createTaskButton = new CreateTaskButton(TASK_BUTTON_X, TASK_BUTTON_Y, TASK_BUTTON_WIDTH, TASK_BUTTON_HEIGHT,
                 tasksList);
+
+        prev = new PreviousButton(NAV_X , NAV_Y, NAV_WIDTH, NAV_HEIGHT, tasksList);
+        next = new NextButton(NAV_X + prev.getWidth(), NAV_Y, NAV_WIDTH, NAV_HEIGHT, tasksList);
     }
 
     public static void main(String[] args) {
@@ -45,6 +54,8 @@ public class Main implements Manager {
         tasksList.draw(g);
         tasksView.draw(g);
         createTaskButton.draw(g);
+        next.draw(g);
+        prev.draw(g);
     }
 
     @Override
@@ -66,6 +77,8 @@ public class Main implements Manager {
     public void mouseClicked(MouseEvent e) {
         tasksList.onClick(e);
         createTaskButton.clicked(e);
+        next.clicked(e);
+        prev.clicked(e);
     }
 
     @Override

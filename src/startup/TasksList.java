@@ -18,17 +18,7 @@ public class TasksList extends Component {
         super(x, y, width, height);
         this.tasksView = tasksView;
 
-        tasksList.add(new Task(this));
-
-        tasksList.add(new Task(this));
-
-        tasksList.add(new Task(this));
-
-        tasksList.add(new Task(this));
-
-        tasksList.add(new Task(this));
-
-        tasksList.add(new Task(this));
+        addTask(new Task(this, "Title", "Important desription"));
     }
 
     public void drawC(Graphics g) {
