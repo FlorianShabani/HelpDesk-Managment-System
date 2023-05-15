@@ -56,12 +56,12 @@ public class Main implements Manager {
 
     }
 
-    AppointmentForm af = new AppointmentForm();
+    TasksCreate tc = new TasksCreate();
 
     @Override
     public void mouseClicked(MouseEvent e) {
         tasksList.onClick(e);
-        af.getAppointment();
+        tc.getTask(tasksList);
     }
 
     @Override
