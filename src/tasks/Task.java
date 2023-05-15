@@ -3,8 +3,6 @@ package tasks;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import org.w3c.dom.events.MouseEvent;
-
 import entities.Clickable;
 import entities.Component;
 import startup.Main;
@@ -18,6 +16,10 @@ public abstract class Task extends Component implements Clickable{
     TasksList tasksList;
 
     public String title, description;
+
+    public int getId() {
+        return id;
+    }
 
     public Task(TasksList tasksList) {
         super(0, 0, Main.TASKS_WIDTH - margin - margin, Main.TASK_HEIGHT);

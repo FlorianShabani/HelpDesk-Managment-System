@@ -10,6 +10,8 @@ import entities.Component;
 import entities.CreateTaskButton;
 import entities.NextButton;
 import entities.PreviousButton;
+import entities.SortAddedButton;
+import entities.SortUrgentButton;
 import setup.Manager;
 import setup.Window;
 
@@ -31,6 +33,8 @@ public class Main implements Manager {
     CreateTaskButton createTaskButton;
     NextButton next;
     PreviousButton prev;
+    SortUrgentButton sortUrgentButton;
+    SortAddedButton sortAddedButton;
 
     public Main() {
         tasksView = new TasksView(VIEW_X, 0, VIEW_WIDTH, SCREEN_HEIGHT - TASK_BUTTON_HEIGHT - 70);
@@ -40,10 +44,12 @@ public class Main implements Manager {
 
         prev = new PreviousButton(NAV_X , NAV_Y, NAV_WIDTH, NAV_HEIGHT, tasksList);
         next = new NextButton(NAV_X + prev.getWidth(), NAV_Y, NAV_WIDTH, NAV_HEIGHT, tasksList);
+        sortUrgentButton = new SortUrgentButton(NAV_X + 150, NAV_Y, 80, NAV_HEIGHT, tasksList);
+        sortAddedButton = new SortAddedButton(NAV_X + 250, NAV_Y, 80, NAV_HEIGHT, tasksList);
     }
 
     public static void main(String[] args) {
-        new Window(SCREEN_WIDTH, SCREEN_HEIGHT, 120, 120, "HelpDesk Managment System", new Main());
+        new Window(SCREEN_WIDTH, SCREEN_HEIGHT, 60, 160, "HelpDesk Managment System", new Main());
     }
 
     @Override
@@ -56,6 +62,9 @@ public class Main implements Manager {
         createTaskButton.draw(g);
         next.draw(g);
         prev.draw(g);
+
+        sortUrgentButton.draw(g);
+        sortAddedButton.draw(g);
     }
 
     @Override
@@ -79,6 +88,8 @@ public class Main implements Manager {
         createTaskButton.clicked(e);
         next.clicked(e);
         prev.clicked(e);
+        sortUrgentButton.clicked(e);
+        sortAddedButton.clicked(e);
     }
 
     @Override
