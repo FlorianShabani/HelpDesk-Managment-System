@@ -5,36 +5,47 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 
-public abstract class Segment {
+public abstract class Component {
 
     int Width, Height;
-    protected int x, y, width, height, padding, margin;
+    protected int x, y, width, height;
 
-    public Segment(int x, int y, int width, int height) {
+    public final static int padding = 10, margin = 10;
+
+    public Component(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        this.padding = 10;
-        this.margin = 10;
 
         this.Width = width + margin + margin;
         this.Height = height + margin + margin;
     }
 
-    public void drawC(Graphics gd) {
+    public Component(int width, int height) {
+        this(0, 0, width, height);
+    }
+
+    public void draw(Graphics gd) {
         Graphics2D g = (Graphics2D) gd;
         AffineTransform tr = g.getTransform();
-        g.translate(margin, margin);
+        g.translate(margin + this.x, margin + this.y);
 
-        draw(g);
-        g.setColor(new Color(181, 229, 237, 160));
-        g.fillRoundRect(x, y, width, height, padding, padding);
+        drawC(g);
 
         g.setTransform(tr);
     }
 
-    public abstract void draw(Graphics g);
+    public void draw(int x, int y, Graphics gd) {
+        Graphics2D g = (Graphics2D) gd;
+        AffineTransform tr = g.getTransform();
+        g.translate(margin + x, margin + y);
+        drawC(g);
+
+        g.setTransform(tr);
+    }
+
+    public abstract void drawC(Graphics g);
 
     public void tick() {
 
