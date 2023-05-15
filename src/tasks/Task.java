@@ -10,7 +10,7 @@ import entities.Component;
 import startup.Main;
 import startup.TasksList;
 
-public class Task extends Component implements Clickable{
+public abstract class Task extends Component implements Clickable{
     public static int ID_CURRENT = 0;
 
     public int id;

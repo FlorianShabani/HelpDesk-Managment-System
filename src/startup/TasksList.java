@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import entities.Component;
+import tasks.StandardTask;
 import tasks.Task;;
 
 public class TasksList extends Component {
@@ -18,7 +19,7 @@ public class TasksList extends Component {
         super(x, y, width, height);
         this.tasksView = tasksView;
 
-        addTask(new Task(this, "Title", "Important desription"));
+        addTask(new StandardTask(this, "Title", "Important desription"));
     }
 
     public void drawC(Graphics g) {
@@ -36,7 +37,7 @@ public class TasksList extends Component {
     }
 
     public void addTask() {
-        tasksList.add(new Task(this));
+        tasksList.add(new StandardTask(this, "Title", "Description"));
     }
 
     public void addTask(Task t) {

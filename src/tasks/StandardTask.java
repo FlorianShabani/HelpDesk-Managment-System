@@ -12,7 +12,7 @@ public class StandardTask extends Task{
     }
 
     public void drawDecorations(Graphics g) {
-        g.setColor(new Color(161, 209, 227, 255));
+        g.setColor(new Color(161, 209, 227, 150));
         g.fillRoundRect(0, 0, width, height, padding, padding);
     }
     
