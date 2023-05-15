@@ -1,7 +1,9 @@
 package startup;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import entities.Component;
 import tasks.Task;
@@ -19,8 +21,13 @@ public class TasksView extends Component{
         g.fillRoundRect(0, 0, width, height, padding, padding);
 
         g.setColor(Color.BLACK);
-        g.drawString(focusedTask.title, margin, margin);
-        g.drawString(focusedTask.description, margin, 100);
+        Font f = new Font("Times New Roman", Font.BOLD, 16);
+		g.setFont(f);
+        g.drawString(focusedTask.title, 20, 20);
+
+        f = new Font("Times New Roman", Font.PLAIN, 12);
+		g.setFont(f);
+        Main.drawTextInBox((Graphics2D) g, focusedTask.getDescription(), 20, 50, width - 100, height,  20);
     }
     
     public void requestFocus(Task t) {

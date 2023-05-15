@@ -35,8 +35,7 @@ public class Task extends Component implements Clickable{
 
     @Override
     public void drawC(Graphics g) {
-        g.setColor(new Color(181, 229, 237, 250));
-        g.fillRoundRect(0, 0, width, height, padding, padding);
+        drawDecorations(g);
 
         g.setColor(Color.BLACK);
         g.drawString("Hello", 20, 20);   
@@ -45,5 +44,26 @@ public class Task extends Component implements Clickable{
     @Override
     public void onClick() {
         tasksList.requestFocus(this);
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
+    public void drawDecorations(Graphics g) {
+        g.setColor(new Color(181, 229, 237, 250));
+        g.fillRoundRect(0, 0, width, height, padding, padding);
     }
 }

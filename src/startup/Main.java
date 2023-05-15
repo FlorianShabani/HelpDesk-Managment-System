@@ -1,7 +1,10 @@
 package startup;
 
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
+import java.awt.geom.AffineTransform;
 
 import entities.Component;
 import setup.Manager;
@@ -11,19 +14,17 @@ public class Main implements Manager {
 
     public static final int SCREEN_WIDTH = 1200, SCREEN_HEIGHT = 800;
 
-
     public static final int TASK_HEIGHT = 80;
 
     public final static int TASKS_X = 0, TASKS_WIDTH = 300;
     public static final int VIEW_X = TASKS_X + TASKS_WIDTH + Component.margin + Component.margin,
-    VIEW_WIDTH = 860;
-
+            VIEW_WIDTH = 860;
 
     TasksView tasksView;
     TasksList tasksList;
 
     public Main() {
-        tasksView = new TasksView(VIEW_X, 0, VIEW_WIDTH, SCREEN_HEIGHT/2);
+        tasksView = new TasksView(VIEW_X, 0, VIEW_WIDTH, SCREEN_HEIGHT / 2);
         tasksList = new TasksList(TASKS_X, 0, TASKS_WIDTH, SCREEN_HEIGHT, tasksView);
     }
 
@@ -33,6 +34,9 @@ public class Main implements Manager {
 
     @Override
     public void draw(Graphics g) {
+        Font f = new Font("Times New Roman", Font.PLAIN, 12);
+		g.setFont(f);
+        
         tasksList.draw(g);
         tasksView.draw(g);
     }
@@ -52,9 +56,12 @@ public class Main implements Manager {
 
     }
 
+    AppointmentForm af = new AppointmentForm();
+
     @Override
     public void mouseClicked(MouseEvent e) {
         tasksList.onClick(e);
+        af.getAppointment();
     }
 
     @Override
@@ -90,5 +97,20 @@ public class Main implements Manager {
     @Override
     public void tick() {
 
+    }
+
+    public static void drawTextInBox(Graphics2D g, String desc, int x, int y, int w, int h, int lh) {
+        AffineTransform at = g.getTransform();
+        g.translate(x, y);
+        int desclength = desc.length();
+        int lineh = lh;
+        int linechar = w / 6;
+        int linec = h / lineh;
+        for (int i = 0; i < linec; i++) {
+            if (-i * linechar + desclength < 0)
+                break;
+            g.drawString(desc.substring(i * linechar, Math.min(desclength, (i + 1) * linechar)), 0, lineh * i);
+        }
+        g.setTransform(at);
     }
 }
