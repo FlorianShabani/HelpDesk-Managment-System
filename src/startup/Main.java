@@ -8,6 +8,7 @@ import java.awt.geom.AffineTransform;
 
 import entities.Component;
 import entities.CreateTaskButton;
+import entities.DoneButton;
 import entities.NextButton;
 import entities.PreviousButton;
 import entities.SortAddedButton;
@@ -35,6 +36,7 @@ public class Main implements Manager {
     PreviousButton prev;
     SortUrgentButton sortUrgentButton;
     SortAddedButton sortAddedButton;
+    DoneButton doneButton;
 
     public Main() {
         tasksView = new TasksView(VIEW_X, 0, VIEW_WIDTH, SCREEN_HEIGHT - TASK_BUTTON_HEIGHT - 70);
@@ -46,6 +48,7 @@ public class Main implements Manager {
         next = new NextButton(NAV_X + prev.getWidth(), NAV_Y, NAV_WIDTH, NAV_HEIGHT, tasksList);
         sortUrgentButton = new SortUrgentButton(NAV_X + 150, NAV_Y, 80, NAV_HEIGHT, tasksList);
         sortAddedButton = new SortAddedButton(NAV_X + 250, NAV_Y, 80, NAV_HEIGHT, tasksList);
+        doneButton = new DoneButton(NAV_X + 350, NAV_Y, 120, NAV_HEIGHT, tasksView);
     }
 
     public static void main(String[] args) {
@@ -65,6 +68,7 @@ public class Main implements Manager {
 
         sortUrgentButton.draw(g);
         sortAddedButton.draw(g);
+        doneButton.draw(g);
     }
 
     @Override
@@ -90,6 +94,7 @@ public class Main implements Manager {
         prev.clicked(e);
         sortUrgentButton.clicked(e);
         sortAddedButton.clicked(e);
+        doneButton.clicked(e);
     }
 
     @Override

@@ -11,6 +11,8 @@ import startup.TasksList;
 public abstract class Task extends Component implements Clickable{
     public static int ID_CURRENT = 0;
 
+    boolean done = false;
+
     public int id;
 
     TasksList tasksList;
@@ -40,7 +42,11 @@ public abstract class Task extends Component implements Clickable{
 
     @Override
     public void drawC(Graphics g) {
-        drawDecorations(g);
+        if(!done) {
+            drawDecorations(g);
+        }else {
+            drawDone(g);
+        }
 
         g.setColor(Color.BLACK);
         g.drawString(title, 20, 20);   
@@ -67,8 +73,21 @@ public abstract class Task extends Component implements Clickable{
         this.description = description;
     }
     
+    public void drawDone(Graphics g) {
+        g.setColor(new Color(0, 255, 0, 50));
+        g.fillRoundRect(0, 0, width, height, padding, padding);
+    }
+
     public void drawDecorations(Graphics g) {
         g.setColor(new Color(181, 229, 237, 250));
         g.fillRoundRect(0, 0, width, height, padding, padding);
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
     }
 }

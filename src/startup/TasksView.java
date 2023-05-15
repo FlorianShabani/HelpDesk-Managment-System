@@ -10,7 +10,7 @@ import tasks.StandardTask;
 import tasks.Task;
 import tasks.UrgentTask;
 
-public class TasksView extends Component{
+public class TasksView extends Component {
     Task focusedTask = new StandardTask(null, "", "");
 
     public TasksView(int x, int y, int width, int height) {
@@ -22,10 +22,17 @@ public class TasksView extends Component{
         g.setColor(new Color(181, 229, 237, 150));
         g.fillRoundRect(0, 0, width, height, padding, padding);
 
-        if(focusedTask instanceof UrgentTask) {
-            g.setColor(new Color(200, 50, 50, 150));
+        if (focusedTask.isDone()) {
+            g.setColor(new Color(0, 255, 0, 50));
             g.fillRoundRect(0, 0, width, 70, padding, padding);
 
+            g.setColor(new Color(0, 200, 0, 250));
+            Font f = new Font("Times New Roman", Font.BOLD, 16);
+            g.setFont(f);
+            g.drawString("Done", 700, 40);
+        } else if (focusedTask instanceof UrgentTask) {
+            g.setColor(new Color(200, 50, 50, 150));
+            g.fillRoundRect(0, 0, width, 70, padding, padding);
 
             g.setColor(new Color(170, 30, 30, 255));
             Font f = new Font("Times New Roman", Font.BOLD, 16);
@@ -35,15 +42,19 @@ public class TasksView extends Component{
 
         g.setColor(Color.BLACK);
         Font f = new Font("Times New Roman", Font.BOLD, 16);
-		g.setFont(f);
+        g.setFont(f);
         g.drawString(focusedTask.getTitle(), 20, 40);
 
         f = new Font("Times New Roman", Font.PLAIN, 12);
-		g.setFont(f);
-        Main.drawTextInBox((Graphics2D) g, focusedTask.getDescription(), 20, 100, width - 100, height,  20);
+        g.setFont(f);
+        Main.drawTextInBox((Graphics2D) g, focusedTask.getDescription(), 20, 100, width - 100, height, 20);
     }
-    
+
     public void requestFocus(Task t) {
         focusedTask = t;
-    }   
+    }
+
+    public Task getFocusedTask() {
+        return focusedTask;
+    }
 }
