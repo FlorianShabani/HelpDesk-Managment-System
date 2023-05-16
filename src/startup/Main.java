@@ -52,7 +52,7 @@ public class Main implements Manager {
     }
 
     public static void main(String[] args) {
-        new Window(SCREEN_WIDTH, SCREEN_HEIGHT, 60, 160, "HelpDesk Managment System", new Main());
+        new Window(SCREEN_WIDTH, SCREEN_HEIGHT, 15, 15, "HelpDesk Managment System", new Main());
     }
 
     @Override

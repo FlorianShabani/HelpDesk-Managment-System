@@ -1,6 +1,7 @@
 package tasks;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import entities.Clickable;
@@ -47,9 +48,10 @@ public abstract class Task extends Component implements Clickable{
         }else {
             drawDone(g);
         }
-
         g.setColor(Color.BLACK);
-        g.drawString(title, 20, 20);   
+        Font f = new Font("Times New Roman", Font.BOLD, 16);
+        g.setFont(f);
+        g.drawString(title, 20, 30);   
     }
 
     @Override
